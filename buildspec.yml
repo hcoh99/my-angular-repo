@@ -11,7 +11,6 @@ phases:
   build:
     commands:
       - ng build -c production
-      - exit 1
       - echo "Build completed."
     finally:
       - echo This is the finally block execution!
