@@ -24,15 +24,15 @@ module.exports = function (config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true,
-    browsers: ['Chrome'],
+    autoWatch: false,                // CI 환경에서는 false로 설정
+    browsers: ['ChromeHeadlessCI'],  // 정의한 커스텀 런처 사용
     customLaunchers: {
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
+        flags: ['--no-sandbox']      // root 권한 실행 에러 해결
       }
     },
-    singleRun: false,
-    restartOnFileChange: true
+    singleRun: true,                 // 테스트 완료 후 프로세스 종료 필수
+    restartOnFileChange: false
   });
 };
